@@ -57,6 +57,7 @@
   --color-ring: var(--ring);
   --color-ring-offset-background: var(--background);
   --color-rail: var(--rail);
+  --color-overlay: var(--overlay);
 
   --color-ink: var(--ink);
   --color-ink-foreground: var(--ink-foreground);
@@ -134,6 +135,7 @@
   --input: oklch(0.9 0.006 250);
   --ring: oklch(0.52 0.16 259 / 0.45);
   --rail: oklch(0.962 0.006 250);
+  --overlay: oklch(0.2 0.02 258 / 0.32);
 
   --ink: oklch(0.2 0.017 260);
   --ink-foreground: oklch(0.955 0.004 250);
@@ -185,6 +187,7 @@
   --input: oklch(1 0 0 / 12%);
   --ring: oklch(0.68 0.14 259 / 0.5);
   --rail: oklch(0.19 0.009 258);
+  --overlay: oklch(0 0 0 / 0.6);
 
   --ink: oklch(0.145 0.008 258);
   --ink-foreground: oklch(0.93 0.004 250);
