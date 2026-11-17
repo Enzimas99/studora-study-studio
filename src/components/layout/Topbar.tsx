@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { Link, useRouterState } from "@tanstack/react-router";
 import { Plus, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Logo } from "@/components/brand/Logo";
@@ -10,6 +10,7 @@ import { useQuickActions } from "./quick-actions";
 export function Topbar() {
   const { openSearch, openTask } = useQuickActions();
   const name = useStudora((s) => s.profile.name);
+  const onHome = useRouterState({ select: (s) => s.location.pathname === "/" });
   return (
     <header className="sticky top-0 z-30 border-b bg-background/85 backdrop-blur-md">
       <div className="mx-auto flex h-14 max-w-[1240px] items-center gap-3 px-4 sm:px-6 lg:px-10">
@@ -32,7 +33,7 @@ export function Topbar() {
             <Search />
           </Button>
           <ThemeToggle />
-          <Button size="sm" className="hidden sm:inline-flex" onClick={() => openTask()}>
+          <Button size="sm" className={onHome ? "hidden" : "hidden sm:inline-flex"} onClick={() => openTask()}>
             <Plus /> Nova atividade
           </Button>
           <Link to="/perfil" className="ml-1 rounded-full focus-ring lg:hidden" aria-label="Perfil">

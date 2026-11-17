@@ -37,7 +37,11 @@ export function AgendaRail({ days = 4 }: { days?: number }) {
         {groups.map((g) => (
           <div key={g.day.toISOString()}>
             <div className="mb-2 flex items-baseline gap-2">
-              <span className="text-[12px] font-semibold">{relativeDay(g.day)}</span>
+              <span className="text-[12px] font-semibold">
+                {["Hoje", "Amanhã"].includes(relativeDay(g.day))
+                  ? relativeDay(g.day)
+                  : capitalize(fmt(g.day, "EEEE").replace("-feira", ""))}
+              </span>
               <span className="text-[11.5px] text-muted-foreground">{capitalize(fmt(g.day, "d 'de' MMMM"))}</span>
             </div>
             <ul className="flex flex-col gap-1.5">
