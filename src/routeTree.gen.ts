@@ -10,33 +10,180 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AtividadesRouteImport } from './routes/atividades'
+import { Route as CadastroRouteImport } from './routes/cadastro'
+import { Route as CalendarioRouteImport } from './routes/calendario'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as MateriaisRouteImport } from './routes/materiais'
+import { Route as PerfilRouteImport } from './routes/perfil'
+import { Route as PlanejamentoRouteImport } from './routes/planejamento'
+import { Route as ProvasRouteImport } from './routes/provas'
+import { Route as RecuperarSenhaRouteImport } from './routes/recuperar-senha'
+import { Route as DisciplinasIndexRouteImport } from './routes/disciplinas.index'
+import { Route as DisciplinasSubjectIdRouteImport } from './routes/disciplinas.$subjectId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AtividadesRoute = AtividadesRouteImport.update({
+  id: '/atividades',
+  path: '/atividades',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CadastroRoute = CadastroRouteImport.update({
+  id: '/cadastro',
+  path: '/cadastro',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CalendarioRoute = CalendarioRouteImport.update({
+  id: '/calendario',
+  path: '/calendario',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MateriaisRoute = MateriaisRouteImport.update({
+  id: '/materiais',
+  path: '/materiais',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PerfilRoute = PerfilRouteImport.update({
+  id: '/perfil',
+  path: '/perfil',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PlanejamentoRoute = PlanejamentoRouteImport.update({
+  id: '/planejamento',
+  path: '/planejamento',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProvasRoute = ProvasRouteImport.update({
+  id: '/provas',
+  path: '/provas',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RecuperarSenhaRoute = RecuperarSenhaRouteImport.update({
+  id: '/recuperar-senha',
+  path: '/recuperar-senha',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DisciplinasIndexRoute = DisciplinasIndexRouteImport.update({
+  id: '/disciplinas/',
+  path: '/disciplinas/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DisciplinasSubjectIdRoute = DisciplinasSubjectIdRouteImport.update({
+  id: '/disciplinas/$subjectId',
+  path: '/disciplinas/$subjectId',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/atividades': typeof AtividadesRoute
+  '/cadastro': typeof CadastroRoute
+  '/calendario': typeof CalendarioRoute
+  '/login': typeof LoginRoute
+  '/materiais': typeof MateriaisRoute
+  '/perfil': typeof PerfilRoute
+  '/planejamento': typeof PlanejamentoRoute
+  '/provas': typeof ProvasRoute
+  '/recuperar-senha': typeof RecuperarSenhaRoute
+  '/disciplinas/$subjectId': typeof DisciplinasSubjectIdRoute
+  '/disciplinas/': typeof DisciplinasIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/atividades': typeof AtividadesRoute
+  '/cadastro': typeof CadastroRoute
+  '/calendario': typeof CalendarioRoute
+  '/login': typeof LoginRoute
+  '/materiais': typeof MateriaisRoute
+  '/perfil': typeof PerfilRoute
+  '/planejamento': typeof PlanejamentoRoute
+  '/provas': typeof ProvasRoute
+  '/recuperar-senha': typeof RecuperarSenhaRoute
+  '/disciplinas/$subjectId': typeof DisciplinasSubjectIdRoute
+  '/disciplinas': typeof DisciplinasIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/atividades': typeof AtividadesRoute
+  '/cadastro': typeof CadastroRoute
+  '/calendario': typeof CalendarioRoute
+  '/login': typeof LoginRoute
+  '/materiais': typeof MateriaisRoute
+  '/perfil': typeof PerfilRoute
+  '/planejamento': typeof PlanejamentoRoute
+  '/provas': typeof ProvasRoute
+  '/recuperar-senha': typeof RecuperarSenhaRoute
+  '/disciplinas/$subjectId': typeof DisciplinasSubjectIdRoute
+  '/disciplinas/': typeof DisciplinasIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/atividades'
+    | '/cadastro'
+    | '/calendario'
+    | '/login'
+    | '/materiais'
+    | '/perfil'
+    | '/planejamento'
+    | '/provas'
+    | '/recuperar-senha'
+    | '/disciplinas/$subjectId'
+    | '/disciplinas/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/atividades'
+    | '/cadastro'
+    | '/calendario'
+    | '/login'
+    | '/materiais'
+    | '/perfil'
+    | '/planejamento'
+    | '/provas'
+    | '/recuperar-senha'
+    | '/disciplinas/$subjectId'
+    | '/disciplinas'
+  id:
+    | '__root__'
+    | '/'
+    | '/atividades'
+    | '/cadastro'
+    | '/calendario'
+    | '/login'
+    | '/materiais'
+    | '/perfil'
+    | '/planejamento'
+    | '/provas'
+    | '/recuperar-senha'
+    | '/disciplinas/$subjectId'
+    | '/disciplinas/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AtividadesRoute: typeof AtividadesRoute
+  CadastroRoute: typeof CadastroRoute
+  CalendarioRoute: typeof CalendarioRoute
+  LoginRoute: typeof LoginRoute
+  MateriaisRoute: typeof MateriaisRoute
+  PerfilRoute: typeof PerfilRoute
+  PlanejamentoRoute: typeof PlanejamentoRoute
+  ProvasRoute: typeof ProvasRoute
+  RecuperarSenhaRoute: typeof RecuperarSenhaRoute
+  DisciplinasSubjectIdRoute: typeof DisciplinasSubjectIdRoute
+  DisciplinasIndexRoute: typeof DisciplinasIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +195,99 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/atividades': {
+      id: '/atividades'
+      path: '/atividades'
+      fullPath: '/atividades'
+      preLoaderRoute: typeof AtividadesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cadastro': {
+      id: '/cadastro'
+      path: '/cadastro'
+      fullPath: '/cadastro'
+      preLoaderRoute: typeof CadastroRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/calendario': {
+      id: '/calendario'
+      path: '/calendario'
+      fullPath: '/calendario'
+      preLoaderRoute: typeof CalendarioRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/materiais': {
+      id: '/materiais'
+      path: '/materiais'
+      fullPath: '/materiais'
+      preLoaderRoute: typeof MateriaisRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/perfil': {
+      id: '/perfil'
+      path: '/perfil'
+      fullPath: '/perfil'
+      preLoaderRoute: typeof PerfilRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/planejamento': {
+      id: '/planejamento'
+      path: '/planejamento'
+      fullPath: '/planejamento'
+      preLoaderRoute: typeof PlanejamentoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/provas': {
+      id: '/provas'
+      path: '/provas'
+      fullPath: '/provas'
+      preLoaderRoute: typeof ProvasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/recuperar-senha': {
+      id: '/recuperar-senha'
+      path: '/recuperar-senha'
+      fullPath: '/recuperar-senha'
+      preLoaderRoute: typeof RecuperarSenhaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/disciplinas/': {
+      id: '/disciplinas/'
+      path: '/disciplinas'
+      fullPath: '/disciplinas/'
+      preLoaderRoute: typeof DisciplinasIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/disciplinas/$subjectId': {
+      id: '/disciplinas/$subjectId'
+      path: '/disciplinas/$subjectId'
+      fullPath: '/disciplinas/$subjectId'
+      preLoaderRoute: typeof DisciplinasSubjectIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AtividadesRoute: AtividadesRoute,
+  CadastroRoute: CadastroRoute,
+  CalendarioRoute: CalendarioRoute,
+  LoginRoute: LoginRoute,
+  MateriaisRoute: MateriaisRoute,
+  PerfilRoute: PerfilRoute,
+  PlanejamentoRoute: PlanejamentoRoute,
+  ProvasRoute: ProvasRoute,
+  RecuperarSenhaRoute: RecuperarSenhaRoute,
+  DisciplinasSubjectIdRoute: DisciplinasSubjectIdRoute,
+  DisciplinasIndexRoute: DisciplinasIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
