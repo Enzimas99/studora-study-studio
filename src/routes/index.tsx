@@ -12,7 +12,7 @@ import { AgendaRail } from "@/components/dashboard/AgendaRail";
 import { SubjectsOverview } from "@/components/dashboard/SubjectsOverview";
 import { useStudora } from "@/lib/data/store";
 import { upcomingExams } from "@/lib/data/selectors";
-import { capitalize, fmt, greeting } from "@/lib/format";
+import { capitalize, fmt, greeting, relativeDay } from "@/lib/format";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -51,12 +51,23 @@ function Dashboard() {
           </h1>
           <p className="mt-2 max-w-lg text-[14px] text-muted-foreground">
             {weekDeliveries > 0
-              ? `${weekDeliveries} ${weekDeliveries === 1 ? "entrega" : "entregas"} ainda nesta semana`
-              : "Nenhuma entrega restante nesta semana"}
-            {nextExam && `, e ${nextExam.title.split(" — ")[0]} de ${nextExam.title.includes("—") ? "" : ""}`}
-            {nextExam && <SubjectName id={nextExam.subjectId} />}
-            {nextExam && ` ${capitalize(fmt(nextExam.date, "EEEE")).replace("-feira", "").toLowerCase() === "" ? "" : `na ${fmt(nextExam.date, "EEEE").replace("-feira", "")}`}`}
-            .
+              ? `${weekDeliveries} ${weekDeliveries === 1 ? "entrega" : "entregas"} até o fim da semana`
+              : "Nenhuma entrega até o fim da semana"}
+            {nextExam ? (
+              <>
+                {" e "}
+                <span className="text-foreground">
+                  {nextExam.title.split(" — ")[0]} de <SubjectName id={nextExam.subjectId} />
+                </span>{" "}
+                {relativeDay(nextExam.date).toLowerCase().startsWith("hoje") ||
+                relativeDay(nextExam.date).toLowerCase().startsWith("amanhã")
+                  ? relativeDay(nextExam.date).toLowerCase()
+                  : `em ${fmt(nextExam.date, "d 'de' MMMM")}`}
+                .
+              </>
+            ) : (
+              "."
+            )}
           </p>
         </div>
         <Button onClick={() => openTask()} className="self-start sm:self-auto">
@@ -89,5 +100,5 @@ function Dashboard() {
 
 function SubjectName({ id }: { id: string }) {
   const name = useStudora((s) => s.subjects.find((x) => x.id === id)?.name);
-  return <span className="text-foreground">{name}</span>;
+  return <>{name}</>;
 }
