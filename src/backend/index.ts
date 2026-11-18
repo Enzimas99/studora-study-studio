@@ -1,0 +1,10 @@
+export { supabase, siteUrl, isSupabaseConfigured } from "./lib/supabase";
+export * from "./types/database";
+export { authService, profileService } from "./services/auth";
+export { disciplinesService } from "./services/disciplines";
+export { tasksService } from "./services/tasks";
+export { examsService } from "./services/exams";
+export { studyService } from "./services/study";
+export { materialsService } from "./services/materials";
+export { calendarService } from "./services/calendar";
+export { dashboardService } from "./services/dashboard";
