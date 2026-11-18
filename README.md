@@ -1,32 +1,46 @@
-# Studora Study Studio
+# Studora — Guia Acadêmico Universitário
 
-Utilize as imagens anexadas como referências visuais prioritárias. Analise cuidadosamente a tipografia, paleta de cores, espaçamentos, hierarquia visual, navegação e organização dos elementos.
+Organize disciplinas, atividades, avaliações, planejamento semanal de estudos, calendário e materiais de aula em um só lugar.
 
-Não copie literalmente nenhuma interface. Extraia os princípios de design e desenvolva uma identidade visual própria para o Studora.
+## Funcionalidades completas
 
-Se houver diferenças entre as referências, mantenha uma linguagem visual consistente em todas as telas.
+- **Visão geral (`/`)**: Saudação contextual, KPIs do semestre, prioridades por urgência, próximas provas, entregas pendentes, progresso semanal e agenda de compromissos.
+- **Disciplinas (`/disciplinas` e `/disciplinas/:subjectId`)**: Gestão de matérias do semestre com código, professor, sala, horário, carga horária, checklist de conteúdos estudados e abas de Trabalhos, Provas e Materiais.
+- **Trabalhos e atividades (`/atividades`)**: Visões **Lista** (agrupada por urgência) e **Kanban** (`Pendente`, `Em andamento`, `Concluído`), filtros avançados e edição rápida.
+- **Provas e notas (`/provas`)**: Próximas avaliações com medidor de preparação, histórico de notas e gráfico de desempenho ponderado por disciplina.
+- **Calendário (`/calendario`)**: Visões **Mês**, **Semana**, **Dia** e **Agenda** unificando provas, prazos de entrega e blocos de estudo.
+- **Planejamento de estudos (`/planejamento`)**: Meta semanal em horas, gráfico diário, sugestões automáticas de revisão para provas, gestão de sessões e **Timer de foco / Pomodoro** integrado.
+- **Materiais (`/materiais`)**: Biblioteca central com upload por arrastar-e-soltar (PDF, DOCX, slides, planilhas, imagens) e links externos filtráveis por disciplina e formato.
+- **Perfil e configurações (`/perfil`)**: Dados universitários, foto de perfil, meta semanal, início da semana, tema (`Claro` / `Escuro` / `Sistema`), notificações e exportação/importação de backup JSON.
+- **Autenticação (`/login`, `/cadastro`, `/recuperar-senha`)**: Fluxo completo de login, criação de conta e redefinição de senha integrado ao Supabase Auth (com modo demonstração instantâneo quando executado localmente sem `.env`).
 
-Priorize qualidade visual e acabamento profissional em vez de simplesmente adicionar muitas funcionalidades.
+---
 
-This project was built with [Lovable](https://lovable.dev).
+## Como rodar localmente
 
-**Live app**: https://studora-study-studio.lovable.app
-
-## Build with Lovable
-
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/013e4302-37d8-4828-b2fa-b50353727d3b).
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
-
-## Development
-
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
-
-```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
-npm run dev
+```bash
+bun install
+bun run dev
 ```
+
+Para gerar o bundle estático compatível com **GitHub Pages**:
+
+```bash
+bun run build:pages
+```
+
+---
+
+## Conectando o Backend Supabase (Opcional — funciona em modo local por padrão)
+
+Os scripts SQL do banco de dados (com RLS completo, views e bucket privado `materials`) estão em `backend/sql/` e os serviços tipados em `src/backend/`:
+
+1. Crie um projeto gratuito em [supabase.com](https://supabase.com).
+2. No **SQL Editor** do Supabase, execute os scripts de `backend/sql/` em ordem:
+   - `20261117000001_schema.sql`
+   - `20261117000002_rls.sql`
+   - `20261117000003_storage.sql`
+   - `20261117000004_dashboard.sql`
+   - `20261117000005_ui_alignment.sql`
+3. Copie `.env.example` para `.env.local` e preencha `VITE_SUPABASE_URL` e `VITE_SUPABASE_ANON_KEY`.
+4. Para **GitHub Pages**, adicione `VITE_SUPABASE_URL` e `VITE_SUPABASE_ANON_KEY` em *Settings → Secrets and variables → Actions* no repositório e selecione **GitHub Actions** como fonte em *Settings → Pages*.
