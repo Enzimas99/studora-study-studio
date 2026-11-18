@@ -70,6 +70,8 @@ export interface Material {
   subjectId: string;
   addedAt: string; // ISO datetime
   sizeKb: number;
+  url?: string; // External URL (for links) or local data URL / signed URL
+  description?: string;
 }
 
 export interface Profile {
@@ -79,6 +81,7 @@ export interface Profile {
   university: string;
   period: string;
   studentId: string;
+  avatarUrl?: string;
   weeklyGoalHours: number;
   weekStartsOn: 0 | 1;
   notifications: {

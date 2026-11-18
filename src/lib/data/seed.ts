@@ -197,7 +197,7 @@ export function createSeed(): StudoraData {
       { id: id("m"), name: "Resumo P2 — Cálculo III.docx", type: "doc", subjectId: "calc3", addedAt: rel(-1, 22), sizeKb: 312 },
       { id: id("m"), name: "Aula 12 — Árvores rubro-negras.pptx", type: "slides", subjectId: "ed", addedAt: rel(-5, 12), sizeKb: 2140 },
       { id: id("m"), name: "Enunciado — Trabalho AVL.pdf", type: "pdf", subjectId: "ed", addedAt: rel(-7, 9), sizeKb: 186 },
-      { id: id("m"), name: "Visualizador de algoritmos", type: "link", subjectId: "ed", addedAt: rel(-12, 15), sizeKb: 0 },
+      { id: id("m"), name: "Visualizador de algoritmos", type: "link", subjectId: "ed", addedAt: rel(-12, 15), sizeKb: 0, url: "https://visualgo.net/pt" },
       { id: id("m"), name: "Tanenbaum — Cap. 2 Processos.pdf", type: "pdf", subjectId: "so", addedAt: rel(-15, 18), sizeKb: 7310 },
       { id: id("m"), name: "Aula 08 — Sincronização.pptx", type: "slides", subjectId: "so", addedAt: rel(-3, 14), sizeKb: 3020 },
       { id: id("m"), name: "Diagrama ER — biblioteca.png", type: "imagem", subjectId: "bd", addedAt: rel(-1, 16), sizeKb: 890 },
