@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Studora — Sua vida acadêmica em um só lugar</title>
+    <meta
+      name="description"
+      content="Disciplinas, trabalhos, provas, calendário e planejamento de estudos organizados em um só lugar."
+    />
+    <link rel="icon" href="./favicon.ico" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif&display=swap"
+    />
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem("studora:theme") || "light";
+          var d =
+            t === "dark" ||
+            (t === "system" && matchMedia("(prefers-color-scheme: dark)").matches);
+          document.documentElement.classList.toggle("dark", d);
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/../src/spa-main.tsx"></script>
+  </body>
+</html>
