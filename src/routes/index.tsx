@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Plus } from "lucide-react";
-import { isSameWeek } from "date-fns";
+import { isSameWeek, startOfDay } from "date-fns";
 import { Button } from "@/components/ui/button";
 import { useQuickActions } from "@/components/layout/quick-actions";
 import { SummaryStrip } from "@/components/dashboard/SummaryStrip";
@@ -37,7 +37,10 @@ function Dashboard() {
   const firstName = profile.name.split(" ")[0];
 
   const weekDeliveries = tasks.filter(
-    (t) => t.status !== "concluido" && isSameWeek(new Date(t.due), now, { weekStartsOn: profile.weekStartsOn }) && new Date(t.due) >= now,
+    (t) =>
+      t.status !== "concluido" &&
+      isSameWeek(new Date(t.due), now, { weekStartsOn: profile.weekStartsOn }) &&
+      new Date(t.due) >= startOfDay(now),
   ).length;
   const nextExam = upcomingExams(exams)[0];
 

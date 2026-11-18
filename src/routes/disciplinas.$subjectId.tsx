@@ -8,6 +8,7 @@ import { UnderlineTabs } from "@/components/common/UnderlineTabs";
 import { SubjectActions } from "@/components/subjects/SubjectActions";
 import { TaskRow } from "@/components/tasks/TaskRow";
 import { UpcomingExamRow, DateBlock, gradeTone } from "@/components/exams/ExamList";
+import { MaterialFormDialog } from "@/components/materials/MaterialFormDialog";
 import { MaterialRow } from "@/components/materials/MaterialRow";
 import { useQuickActions } from "@/components/layout/quick-actions";
 import { actions, useStudora } from "@/lib/data/store";
@@ -40,6 +41,7 @@ function SubjectDetail() {
   const subject = data.subjects.find((s) => s.id === subjectId);
   const [tab, setTab] = useState<Tab>("trabalhos");
   const [topic, setTopic] = useState("");
+  const [materialOpen, setMaterialOpen] = useState(false);
 
   if (!subject) {
     return (
@@ -155,15 +157,27 @@ function SubjectDetail() {
           )}
           {tab === "materiais" &&
             (materials.length ? (
-              <ul className="divide-y">
-                {materials.map((m) => (
-                  <MaterialRow key={m.id} material={m} subject={subject} showSubject={false} />
-                ))}
-              </ul>
+              <div>
+                <div className="flex items-center justify-between border-b bg-muted/40 px-4 py-2 sm:px-5">
+                  <span className="eyebrow">Arquivos e links da disciplina</span>
+                  <Button type="button" variant="ghost" size="sm" onClick={() => setMaterialOpen(true)}>
+                    <Plus /> Material
+                  </Button>
+                </div>
+                <ul className="divide-y">
+                  {materials.map((m) => (
+                    <MaterialRow key={m.id} material={m} subject={subject} showSubject={false} />
+                  ))}
+                </ul>
+              </div>
             ) : (
               <EmptyState
                 title="Nenhum material"
-                action={<Button asChild variant="outline" size="sm"><Link to="/materiais">Adicionar na biblioteca</Link></Button>}
+                action={
+                  <Button variant="outline" size="sm" onClick={() => setMaterialOpen(true)}>
+                    <Plus /> Adicionar material
+                  </Button>
+                }
               />
             ))}
         </section>
@@ -221,6 +235,12 @@ function SubjectDetail() {
           </section>
         </aside>
       </div>
+
+      <MaterialFormDialog
+        open={materialOpen}
+        onOpenChange={setMaterialOpen}
+        defaultSubjectId={subject.id}
+      />
     </div>
   );
 }
