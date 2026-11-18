@@ -3,7 +3,7 @@ import { LogOut, PanelLeftClose, PanelLeftOpen, Settings } from "lucide-react";
 import { Logo } from "@/components/brand/Logo";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { SubjectDot } from "@/components/common/SubjectTag";
-import { useStudora } from "@/lib/data/store";
+import { authActions, useStudora } from "@/lib/data/store";
 import { cn } from "@/lib/utils";
 import { NAV_ITEMS, isActivePath } from "./nav-items";
 import { UserAvatar } from "./UserAvatar";
@@ -133,7 +133,9 @@ export function SidebarUser({ collapsed = false, onNavigate }: { collapsed?: boo
           <button
             type="button"
             aria-label="Sair"
-            onClick={() => navigate({ to: "/login" })}
+            onClick={() => {
+              void authActions.signOut().finally(() => navigate({ to: "/login" }));
+            }}
             className="flex h-8 w-8 items-center justify-center rounded-md text-ink-muted transition-colors hover:bg-ink-hover hover:text-ink-foreground focus-ring"
           >
             <LogOut className="h-4 w-4" strokeWidth={1.75} />
